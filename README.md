@@ -16,7 +16,9 @@ There are some other issues, which are not so apparent at first glance, but pop 
 Our approach at solving the problem consists of two parts. First we detect the objects in each frame of each sequence, and then we track them across the frames. Correlating the positions of objects in different frames helps us clean the false detections made in the first part and boosts the overall accuracy of our solution.
 
 ## Part 1: Finding GEO objects using Deep Learning
-In the first part, we use deep learning to detect GEO objects from individual images. To do so, we generate masks for each frame - images with pixel value equal to 1 for each pixel where an object is present and 0 where it is not. These masks are then used as target images to train a ![Feature Pyramid Network (FPN)](./pictures/FPN.png), which learns how to generate masks from images.
+In the first part, we use deep learning to detect GEO objects from individual images. To do so, we generate masks for each frame - images with pixel value equal to 1 for each pixel where an object is present and 0 where it is not. These masks are then used as target images to train an [Feature Pyramid Network (FPN)](https://arxiv.org/abs/1612.03144) , which learns how to generate masks from images.
+
+![Feature Pyramid Network (FPN)](./figures/FPN.png)
 
 A Feature Pyramid Network is a framework that is an object segmentation model to extract features from images and generate masks of objects of arbitrary sizes. It is composed of two parallel stacks of convolutional layers: a bottom-up pathway and a top-down pathway. The former stack is the same as a typical convolutional network which creates representations of the input image at various scales. The latter stack is responsible for upscaling semantically-strong feature maps from the top of the pyramid - low in resolution but containing more visual information about the image. These are then combined with same sized feature maps from the bottom-up pathway, merging information from both high and low level features maps which leads to improvement over standard feature extraction methods. 
 
@@ -26,11 +28,15 @@ Below we show some of the images alongside corresponding ground truth mask and t
 
 ![RSO Detection 1](./figures/detection_1.png)
 
+.
 
 ![RSO Detection 2](./figures/detection_2.png)
 
+.
 
 ![RSO Detection 3](./figures/detection_3.png)
+
+.
 
 As you can see, the model detects objects that are too faint to be seen by naked eyes, especially in the second and third image, while in the fourth image it missed one out of the three objects. Overall, our model is ~88 % accurate in generating masks. But wait, that’s not it! We can further improve our accuracy by tracking individual objects across frames, as explained below. 
 
