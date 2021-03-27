@@ -28,8 +28,6 @@ Below we show some of the images alongside corresponding ground truth mask and t
 
 ![RSO Detection 2](./figures/detection_2.png)
 
-![RSO Detection 3](./figures/detection_3.png)
-
 As you can see, the model detects objects that are too faint to be seen by naked eyes, especially in the second and third image, while in the fourth image it missed one out of the three objects. Overall, our model is ~88 % accurate in generating masks. But wait, that’s not it! We can further improve our accuracy by tracking individual objects across frames, as explained below. 
 
 ## Part 2: Tracking objects across frames to improve detection accuracy
