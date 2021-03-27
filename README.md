@@ -24,18 +24,18 @@ This process generates a feature map at each level of the pyramid, and one or mo
 
 Below we show some of the images alongside corresponding ground truth mask and the predicted mask:
 
-![RSO Detection 1](./pictures/detection_1.png)
+![RSO Detection 1](./figures/detection_1.png)
 
-![RSO Detection 2](./pictures/detection_2.png)
+![RSO Detection 2](./figures/detection_2.png)
 
-![RSO Detection 3](./pictures/detection_3.png)
+![RSO Detection 3](./figures/detection_3.png)
 
 As you can see, the model detects objects that are too faint to be seen by naked eyes, especially in the second and third image, while in the fourth image it missed one out of the three objects. Overall, our model is ~88 % accurate in generating masks. But wait, that’s not it! We can further improve our accuracy by tracking individual objects across frames, as explained below. 
 
 ## Part 2: Tracking objects across frames to improve detection accuracy
 The second part of our solution uses a custom algorithm based on vector mathematics to track the objects across frames. This allows us to detect objects missed by the model as well as clean false detections. Its inner working is described in detail below.
 
-![Tracking](./pictures/tracking.png)
+![Tracking](./figures/tracking.png)
 
 The algorithm works pretty well and provides an accuracy boost of ~4% over the solution in Part 1. In addition, it also works in crowded scenes as shown below, which is often a difficult scenario for commonly used line detection algorithms such as Sequential RANSAC, J-linkage, T-linkage, and other model fitting algorithms. 
 The final results are shown below for some of the sequences. Red <span style="color:red">**+**</span> symbol is where objects are really present (ground truth), coloured circles are objects detected by the machine learning model in different frames (images) and black <span style="color:black">**X**</span> are the detections after post-processing.
@@ -43,12 +43,12 @@ The final results are shown below for some of the sequences. Red <span style="co
 ### Example 1: Detecting objects in crowded scenes
 Two of the objects in the following example are fairly close to each other, yet the model detects both of them easily.
 
-![Tracking objects](./pictures/tracking_1.png)
+![Tracking objects](./figures/tracking_1.png)
 
 ### Example 2: Cleaning false positives
 In this sample, the ML model detects two false positives which are safely ignored during post-processing and only the correct detections are retained, improving overall performance of the algorithm.
 
-![Tracking objects](./pictures/tracking_2.png)
+![Tracking objects](./figures/tracking_2.png)
 
 # Try it yourself!
 Here is a demo code and web app that you can use to detect GEO and near-GEO objects in your images. Try it out, and challenge yourself with our AI model!
