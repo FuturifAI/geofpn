@@ -16,7 +16,7 @@ There are some other issues, which are not so apparent at first glance, but pop 
 Our approach at solving the problem consists of two parts. First we detect the objects in each frame of each sequence, and then we track them across the frames. Correlating the positions of objects in different frames helps us clean the false detections made in the first part and boosts the overall accuracy of our solution.
 
 ## Part 1: Finding GEO objects using Deep Learning
-In the first part, we use deep learning to detect GEO objects from individual images. To do so, we generate masks for each frame - images with pixel value equal to 1 for each pixel where an object is present and 0 where it is not. These masks are then used as target images to train an [Feature Pyramid Network (FPN)](https://arxiv.org/abs/1612.03144) , which learns how to generate masks from images.
+In the first part, we use deep learning to detect GEO objects from individual images. To do so, we generate masks for each frame - images with pixel value equal to 1 for each pixel where an object is present and 0 where it is not. These masks are then used as target images to train a [Feature Pyramid Network (FPN)](https://arxiv.org/abs/1612.03144) , which learns how to generate masks from images.
 
 ![Feature Pyramid Network (FPN)](./figures/FPN.png)
 
@@ -54,7 +54,7 @@ In this sample, the ML model detects two false positives which are safely ignore
 # Try it yourself!
 Here is a demo code and web app that you can use to detect GEO and near-GEO objects in your images. Try it out, and challenge yourself with our AI model!
 
-[Link for webapp]( https://geofpn.herokuapp.com/)
+[Link for Webapp]( https://geofpn.herokuapp.com/)
 
 [Link for ONNX Model]( https://drive.google.com/file/d/1JkDcwkXSTLFET8_odRpW3Q1_UqZHu9ML/view?usp=sharing)
 
