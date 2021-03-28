@@ -61,5 +61,6 @@ Here is a demo code and web app that you can use to detect GEO and near-GEO obje
 
 FuturifAI brings autonomy using Space and Earth data to solve grand challenges and improve the engineering efficiency in various industries, namely Retail, Horticulture/Agriculture, and Space. We are looking forward to partnerships for bringing autonomy in use and adding value to your business.
 
-Please cite as:
+#### Please cite as:
+
 Abay, R. and Gupta, K., 2021. GEO-FPN: A convolutional neural network for detecting GEO and near-GEO space objects from optical images. In: Proceedings of the 8th European Space Debris Conference.
